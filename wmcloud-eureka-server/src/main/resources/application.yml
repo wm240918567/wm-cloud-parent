@@ -1,0 +1,28 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: wmcloud-eureka-server
+eureka:
+  instance:
+    hostname: 127.0.0.1 #eureka服务器地址
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+  server:
+    eviction-interval-timer-in-ms: 30000 #定时任务执行时间毫秒
+    enable-self-preservation: false #是否开启自我保护模式
+    rate-limiter-enabled: false #是否开启限流
+    rate-limiter-burst-size: 10 #eureka令牌桶限流大小
+  client:
+    register-with-eureka: true #是否向eureka注册自己
+    fetch-registry: false #是否拉取注册表
+    service-url: #注册地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -1,0 +1,74 @@
+server:
+  port: 8201
+spring:
+  zipkin:
+    base-url: http://localhost:8301
+  redis:
+    host: localhost
+    port: 6379
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #类似zuul的服务名/path配置
+          enabled: true
+          #启用小写
+          lower-case-service-id: true
+      routes:
+      - id: wm-test1
+        uri: lb://wm-test
+        predicates:
+          - Path=/test/**
+          - Method=GET
+          - Between=2018-09-20T06:06:06+08:00[Asia/Shanghai], 2020-01-20T06:06:06+08:00[Asia/Shanghai]
+#          - After=2018-09-20T06:06:06+08:00[Asia/Shanghai]
+#          - Before=2020-01-20T06:06:06+08:00[Asia/Shanghai]
+#          - Cookie=ityouknow, kee.e
+#          - Header=X-Request-Id, \d+
+#          - Host=**.ityouknow.com
+#          - Query=smile
+#          - Query=keep, pu.
+#          - RemoteAddr=192.168.1.1/24
+        filters:
+        - LogTime=name,value #自定义拦截器
+        - PrefixPath=/test #给请求path增加前缀
+        - RewritePath=/get2/666, /get1 #重写path拦截器
+        - name: RequestSize  #限制请求大小
+          args:
+            maxSize: 10240
+        - name: Hystrix
+          args:
+            name: fetchIngredients
+            fallbackUri: forward:/fallback
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 10  #每秒允许用户处理多少请求，这是令牌桶被填充的速率
+            redis-rate-limiter.burstCapacity: 20  #用户在一秒钟内允许执行的最大请求数。这是令牌桶可以容纳的令牌数量。将此值设置为零将阻塞所有请求。
+            key-resolver: "#{@ipKeyResolver}"  #需要注入一个resolver才可使用
+      - id: wm-test1-fallback
+        uri: http://localhost:8201
+        predicates:
+        - Path=/fallback
+  application:
+    name: wm-gateway-server
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+  client:
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+logging:
+  level:
+    org.springframework.web: info        ##Spring框架中的日志级别
+    com.thinkingcao.demo.wechat: info    ##自己项目包名下的日志级别
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

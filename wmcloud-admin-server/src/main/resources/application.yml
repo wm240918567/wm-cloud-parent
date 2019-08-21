@@ -1,0 +1,51 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: wm-admin-server
+  security:
+    user:
+      name: admin
+      password: admin
+  mail:
+    host: smtp.qq.com
+    username: 240918567@qq.com
+    password: vdvhxoxeqqotcaaa
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  boot:
+    admin:
+      probed-endpoints: health, env, etrics, threaddump:dump, httptrace:trace,jolokia, info, logfile, refresh, flyway, liquibase, heapdump, loggers, auditevents
+      notify:
+        mail:
+          to: 240918567@qq.com
+          enabled: true
+          from: 240918567@qq.com
+
+
+eureka:
+  instance:
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+    easeRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
