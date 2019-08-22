@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="wmcloud-job-server" />
         <module name="wmcloud-admin-server" />
         <module name="wmcloud-zipkin-server" />
         <module name="wmcloud-gateway-server" />
@@ -18,6 +19,7 @@
       <module name="wmcloud-admin-server" options="-parameters" />
       <module name="wmcloud-eureka-server" options="-parameters" />
       <module name="wmcloud-gateway-server" options="-parameters" />
+      <module name="wmcloud-job-server" options="-parameters" />
       <module name="wmcloud-zipkin-server" options="-parameters" />
     </option>
   </component>

@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/wmcloud-gateway-server/pom.xml" />
         <option value="$PROJECT_DIR$/wmcloud-zipkin-server/pom.xml" />
         <option value="$PROJECT_DIR$/wmcloud-admin-server/pom.xml" />
+        <option value="$PROJECT_DIR$/wmcloud-job-server/pom.xml" />
       </list>
     </option>
   </component>
