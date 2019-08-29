@@ -3,9 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wmcloud-admin-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wmcloud-broker-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wmcloud-eureka-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wmcloud-gateway-server" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/wmcloud-job-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wmcloud-job-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wmcloud-zipkin-server" charset="UTF-8" />
   </component>

@@ -30,12 +30,19 @@
         <zipkin.version>2.9.4</zipkin.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <xxl-job.version>2.1.0</xxl-job.version>
+        <swagger.version>1.5.13</swagger.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>false</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
             <optional>false</optional>
         </dependency>
     </dependencies>
