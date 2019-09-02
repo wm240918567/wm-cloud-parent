@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Entity(name = "message")
 @ApiModel(value = "消息对象", description = "代理对象消息")
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 public class Message {
 

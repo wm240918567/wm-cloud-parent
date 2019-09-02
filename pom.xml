@@ -30,7 +30,7 @@
         <zipkin.version>2.9.4</zipkin.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <xxl-job.version>2.1.0</xxl-job.version>
-        <swagger.version>1.5.13</swagger.version>
+        <swagger2.version>2.9.2</swagger2.version>
     </properties>
 
     <dependencies>
@@ -39,26 +39,41 @@
             <artifactId>lombok</artifactId>
             <optional>false</optional>
         </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>${swagger.version}</version>
-            <optional>false</optional>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <!-- swagger2 start -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <!-- swagger2 end -->
+
+
+            <!--xxl-job start-->
             <dependency>
                 <groupId>com.xuxueli</groupId>
                 <artifactId>xxl-job-core</artifactId>
                 <version>${xxl-job.version}</version>
             </dependency>
+            <!--xxl-job end-->
+
+            <!--spring boot admin start -->
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
                 <version>${spring-boot-admin.version}</version>
             </dependency>
+            <!--spring boot admin end -->
+
+            <!--zipkin start-->
             <dependency>
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-server</artifactId>
@@ -69,6 +84,8 @@
                 <artifactId>zipkin-autoconfigure-ui</artifactId>
                 <version>${zipkin.version}</version>
             </dependency>
+            <!--zipkin end-->
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -82,6 +99,5 @@
     <build>
         <finalName>wm-cloud-parent</finalName>
     </build>
-
 
 </project>

@@ -20,7 +20,7 @@ public class HttpJsonMesasgeSendStrategy implements MesasgeSendStrategy {
 
     private static int num = 0;
 
-    @Autowired
+    @Autowired(required = false)
     private RestTemplate restTemplate;
 
     @Autowired

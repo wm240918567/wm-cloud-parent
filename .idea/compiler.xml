@@ -9,9 +9,9 @@
         <module name="wmcloud-gateway-server" />
         <module name="wmcloud-admin-server" />
         <module name="wmcloud-job-server" />
-        <module name="wmcloud-broker-server" />
-        <module name="wmcloud-eureka-server" />
         <module name="wmcloud-zipkin-server" />
+        <module name="wmcloud-eureka-server" />
+        <module name="wmcloud-broker-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

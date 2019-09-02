@@ -4,6 +4,8 @@ import com.wmcloud.broker.common.StatusConst;
 import com.wmcloud.broker.entity.Message;
 import com.wmcloud.broker.service.MessageService;
 import com.wmcloud.broker.util.MessageIdUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/msg")
 @Slf4j
+@Api("消息接口")
 public class MessageController {
 
     @Autowired
@@ -21,6 +24,7 @@ public class MessageController {
 
 
     @PostMapping("/init")
+    @ApiOperation(value = "/init方法")
     public boolean init(@RequestBody Message message) {
         message.setId(messageIdUtils.initId());
         message.setStatus(StatusConst.init.getCode());
