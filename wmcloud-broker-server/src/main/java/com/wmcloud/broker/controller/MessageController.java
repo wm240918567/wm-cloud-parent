@@ -22,6 +22,12 @@ public class MessageController {
     @Autowired
     private MessageIdUtils messageIdUtils;
 
+    @GetMapping("/get1/{id}")
+    @ApiOperation(value = "/get1/{id}方法")
+    public boolean get1(@PathVariable("id")String id){
+        throw new RuntimeException("id:" + id);
+    }
+
 
     @PostMapping("/init")
     @ApiOperation(value = "/init方法")

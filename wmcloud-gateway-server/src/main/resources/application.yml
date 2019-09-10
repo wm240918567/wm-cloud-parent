@@ -15,14 +15,22 @@ spring:
           #启用小写
           lower-case-service-id: true
       routes:
-      #swagger路由
-      - id: wmcloud-broker-server
+      - id: wmcloud-broker-server-msg-get1
         uri: lb://wmcloud-broker-server
         predicates:
-          - Path=/wmcloud-broker-server/**
-        filter:
-          - SwaggerHeaderFilter
-          - StripPrefix=1
+        - Path=/msg/get1/{segment}
+        filters:
+        - name: Retry
+          args:
+            retries: 3
+            series:
+              - SERVER_ERROR
+            statuses:
+              - OK
+            methods:
+              - GET
+            exceptions:
+              - java.io.IOException
 
       - id: wm-test1
         uri: lb://wm-test
@@ -58,6 +66,14 @@ spring:
         uri: http://localhost:8201
         predicates:
         - Path=/fallback
+        #swagger路由
+      - id: wmcloud-broker-server
+        uri: lb://wmcloud-broker-server
+        predicates:
+          - Path=/wmcloud-broker-server/**
+        filter:
+          - SwaggerHeaderFilter
+          - StripPrefix=1
   application:
     name: wm-gateway-server
 
