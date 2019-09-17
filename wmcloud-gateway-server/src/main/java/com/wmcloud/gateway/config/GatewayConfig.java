@@ -1,6 +1,7 @@
 package com.wmcloud.gateway.config;
 
 import com.wmcloud.gateway.filter.LogTimeGatewayFilterFactory;
+import com.wmcloud.gateway.filter.PermissionsFilter;
 import com.wmcloud.gateway.filter.SwaggerHeaderFilter;
 import com.wmcloud.gateway.filter.TraceIdFilter;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
@@ -38,6 +39,16 @@ public class GatewayConfig {
     @Bean
     public TraceIdFilter traceIdFilter() {
         return new TraceIdFilter();
+    }
+
+    /**
+     * 启动权限过滤器
+     *
+     * @return PermissionsFilter 权限过滤器
+     */
+    @Bean
+    public PermissionsFilter permissionsFilter() {
+        return new PermissionsFilter();
     }
 
     /**
