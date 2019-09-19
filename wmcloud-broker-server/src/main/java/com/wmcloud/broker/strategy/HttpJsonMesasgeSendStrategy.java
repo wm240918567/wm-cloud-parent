@@ -9,8 +9,8 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.wmframework.common.RespConst;
 import org.wmframework.result.Resp;
+import org.wmframework.result.RespConst;
 
 import java.util.List;
 

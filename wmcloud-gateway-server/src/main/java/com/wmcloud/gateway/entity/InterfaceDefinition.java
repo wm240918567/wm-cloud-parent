@@ -14,13 +14,13 @@ public class InterfaceDefinition {
     private String name;
 
     /**
-     * 请求完整path路径
-     */
-    private String uri;
-
-    /**
      * true:支持动态更新  false:不支持动态更新
      */
     private boolean dynamic;
+
+    /**
+     * 角色
+     */
+    private Role role;
 
 }

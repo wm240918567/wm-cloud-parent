@@ -74,6 +74,13 @@ spring:
         filter:
           - SwaggerHeaderFilter
           - StripPrefix=1
+      - id: wm-quick-starter
+        uri: lb://wm-quick-starter
+        predicates:
+          - Path=/wm-quick-starter/**
+        filter:
+          - SwaggerHeaderFilter
+          - StripPrefix=1
   application:
     name: wm-gateway-server
 

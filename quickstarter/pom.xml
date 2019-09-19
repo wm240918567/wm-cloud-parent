@@ -17,13 +17,14 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <quick-starter.version>1.0.0-SNAPSHOT</quick-starter.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.wmframework</groupId>
             <artifactId>wm-quick-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${quick-starter.version}</version>
         </dependency>
 
         <dependency>
