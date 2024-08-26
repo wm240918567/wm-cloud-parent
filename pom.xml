@@ -30,7 +30,7 @@
         <zipkin.version>2.9.4</zipkin.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <xxl-job.version>2.1.0</xxl-job.version>
-        <swagger2.version>2.9.2</swagger2.version>
+        <swagger2.version>2.10.0</swagger2.version>
     </properties>
 
     <dependencies>
